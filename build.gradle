@@ -27,6 +27,16 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
     
-    
+    //Rest Assured
     testImplementation 'io.rest-assured:rest-assured:5.4.0'
+    
+    // JSON Schema Validator
+    implementation 'io.rest-assured:json-schema-validator:5.4.0'
+    
+     // TestNG
+    testImplementation 'org.testng:testng:7.9.0'
+}
+
+test {
+    useTestNG()
 }
