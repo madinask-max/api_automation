@@ -1,4 +1,5 @@
-package api_automation;
+package utils;
+
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
 
@@ -12,5 +13,6 @@ public class APIUtils {
 		return given().header("Content-Type", "application/json").body(body).when().post(endpoint).then().extract()
 				.response();
 	}
-
+	
 }
+
