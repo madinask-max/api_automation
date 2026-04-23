@@ -10,7 +10,6 @@ import models.request.CreatePostRequest;
 import services.PostService;
 import utils.APIUtils;
 import utils.ExtentTestManager;
-import utils.TestData;
 
 public class APITest extends BaseTest {
 
