@@ -9,7 +9,7 @@ public class ExtentManager {
 
     public static ExtentReports getInstance() {
         if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/API_TestAutomation_ExtentReport.html");
+            ExtentSparkReporter reporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/build/reports/API_TestAutomation_ExtentReport.html");
 
             reporter.config().setReportName("API Automation Report");
             reporter.config().setDocumentTitle("Test Results");
