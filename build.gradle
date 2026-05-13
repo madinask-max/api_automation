@@ -25,7 +25,9 @@ dependencies {
 }
 
 test {
-     useTestNG()
+     useTestNG(){
+     suites "src/test/resources/testNG.xml"
+ }
 
     testLogging {
         events "passed", "failed", "skipped"
