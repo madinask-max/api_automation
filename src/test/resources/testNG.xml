@@ -1,0 +1,15 @@
+<suite name="Suite">
+
+    <test name="API Tests">
+
+ 	<listeners>
+        <listener class-name="listeners.FailedTestListener"/>
+    </listeners>
+
+        <classes>
+            <class name="tests.APITest"/>
+        </classes>
+
+    </test>
+
+</suite>
