@@ -1,26 +1,27 @@
 package utils;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
 
 public class ExtentManager {
 
 	private static ExtentReports extent;
 
-    public static ExtentReports getInstance() {
-        if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/build/reports/API_TestAutomation_ExtentReport.html");
-            
-            System.out.println("<<<<<<<<Report Path:>>>>>>>>>>>>> " + System.getProperty("user.dir") + "/build/reports/ExtentReport.html");
+	public static ExtentReports getInstance() {
+		if (extent == null) {
+			ExtentSparkReporter reporter = new ExtentSparkReporter(
+					System.getProperty("user.dir") + "/build/reports/API_TestAutomation_ExtentReport.html");
 
-            reporter.config().setReportName("API Automation Report");
-            reporter.config().setDocumentTitle("Test Results");
+			System.out.println("<<<<<<<<Report Path:>>>>>>>>>>>>> " + System.getProperty("user.dir")
+					+ "/build/reports/ExtentReport.html");
 
-            extent = new ExtentReports();
-            extent.attachReporter(reporter);
-        }
-        return extent;
-    }
-	
-	
+			reporter.config().setReportName("API Automation Report");
+			reporter.config().setDocumentTitle("Test Results");
+
+			extent = new ExtentReports();
+			extent.attachReporter(reporter);
+		}
+		return extent;
+	}
+
 }
