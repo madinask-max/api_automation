@@ -1,8 +1,5 @@
 package listeners;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -15,54 +12,40 @@ import utils.ExtentManager;
 public class TestListener implements ITestListener {
 	
 
-	 private static final List<String> failedTests =
-	            new ArrayList<>();
+	 ExtentReports extent = ExtentManager.getInstance();
+
+	    ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+
+	    @Override
+	    public void onTestStart(ITestResult result) {
+
+	        ExtentTest extentTest =
+	                extent.createTest(result.getMethod().getMethodName());
+
+	        test.set(extentTest);
+	    }
 
 	    @Override
 	    public void onTestSuccess(ITestResult result) {
 
-	        System.out.println("PASSED : "
-	                + result.getMethod().getMethodName());
+	        test.get().pass("Test Passed");
 	    }
 
 	    @Override
 	    public void onTestFailure(ITestResult result) {
 
-	        String failedTest =
-	                result.getTestClass().getName()
-	                + " -> "
-	                + result.getMethod().getMethodName();
+	        test.get().fail(result.getThrowable());
+	    }
 
-	        failedTests.add(failedTest);
+	    @Override
+	    public void onTestSkipped(ITestResult result) {
 
-	        System.out.println("FAILED : " + failedTest);
-
-	        System.out.println(result.getThrowable());
+	        test.get().skip("Test Skipped");
 	    }
 
 	    @Override
 	    public void onFinish(ITestContext context) {
 
-	    	
-	    	
-	        System.out.println("\n=================================");
-	        System.out.println("FAILED TESTS SUMMARY");
-	        System.out.println("=================================");
-
-	        if (failedTests.isEmpty()) {
-
-	            System.out.println("No Failed Tests");
-
-	        } else {
-
-	            for (String test : failedTests) {
-
-	                System.out.println(test);
-	            }
-	        }
-
-	        System.out.println("=================================\n");
-	        ExtentManager.getInstance().flush();
-	        
+	        extent.flush();
 	    }
 }

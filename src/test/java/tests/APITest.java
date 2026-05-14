@@ -20,7 +20,7 @@ public class APITest extends BaseTest {
 		Response response = APIUtils.getRequest("/posts");
 
 		System.out.println(response.getBody().asString());
-		Assert.assertEquals(response.getStatusCode(), 200);
+		Assert.assertEquals(response.getStatusCode(), 400);
 		Assert.assertTrue(response.getTime() < 3000);
 	}
 
@@ -32,7 +32,7 @@ public class APITest extends BaseTest {
 
 		System.out.println(response.getBody().asString());
 
-		Assert.assertEquals(response.getStatusCode(), 200);
+		Assert.assertEquals(response.getStatusCode(), 400);
 		Assert.assertEquals(response.jsonPath().getInt("id"), 1);
 	}
 
